@@ -1,0 +1,4 @@
+reservation:
+    resource: "@ReservationBundle/Controller/"
+    type:     annotation
+    prefix:   /

@@ -1,0 +1,19 @@
+DirectoryIndex index.html
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+    RewriteRule ^(.*) - [E=BASE:%1]
+    # If the requested filename exists, simply serve it.
+    # We only want to let Apache serve files and not directories.
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule .? - [L]
+    # Rewrite to API
+    RewriteRule ^api/(.*) /app.php/$1 [L]
+    # Rewrite all other queries to the front controller.
+    RewriteRule .? %{ENV:BASE}/index.html [L]
+</IfModule>
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Headers "POST, GET, PUT, OPTIONS"
+    Header always set Access-Control-Allow-Methods "X-Requested-With, content-type"
+</IfModule>
