@@ -2,8 +2,6 @@
 
 namespace ReservationBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -18,8 +16,8 @@ class ReadController extends Controller
         $repo = $this->getDoctrine()->getRepository('ReservationBundle:Reservations');
         
         $reservations = $repo->createQueryBuilder('q')
-           ->getQuery()
-           ->getArrayResult();
+            ->getQuery()
+            ->getArrayResult();
         
         $response = new JsonResponse();
         $response->setData($reservations);

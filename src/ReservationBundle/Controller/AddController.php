@@ -2,8 +2,6 @@
 
 namespace ReservationBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,29 +14,40 @@ use ReservationBundle\Entity\Users;
 class AddController extends Controller
 {
     /**
-     * @Route("/reservations/add")
+     * @Route("/reservations/add/{classId}/{classroomId}/{lessonId}/{userId}")
      * @Method({"POST"})
      */
-    public function reservationsAction(Request $request)
+    public function reservationsAction(Request $request, $classId, $classroomId, $lessonId, $userId)
     {
         $data = $request->request->get('reservation');
-        
+
         $em = $this->getDoctrine()->getManager();
-        
+
+        $repoClasses = $this->getDoctrine()->getRepository('ReservationBundle:Classes');
+        $class = $repoClasses->findOneBy(array('id' => $classId));
+
+        $repoClassrooms = $this->getDoctrine()->getRepository('ReservationBundle:Classrooms');
+        $classroom = $repoClassrooms->findOneBy(array('id' => $classroomId));
+
+        $repoLessons = $this->getDoctrine()->getRepository('ReservationBundle:Lessons');
+        $lesson = $repoLessons->findOneBy(array('id' => $lessonId));
+
+        $repoUsers = $this->getDoctrine()->getRepository('ReservationBundle:Users');
+        $user = $repoUsers->findOneBy(array('id' => $userId));
+
         $reservation = new Reservations();
-        
+
         $reservation->setStartTime($data["time"]["start"])
                     ->setEndTime($data["time"]["end"])
-                    ->setClasses($data["class"])
-                    ->setClassrooms($data["classroom"])
-                    ->setLessons($data["lesson"])
-                    ->setUsers($data["user"]);
+                    ->setClasses($class)
+                    ->setClassrooms($classroom)
+                    ->setLessons($lesson)
+                    ->setUsers($user);
 
         $em->persist($reservation);
 
         $em->flush();
-        
-        
+
         return new Response();
     }
     
