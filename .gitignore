@@ -14,3 +14,4 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/Client/reservation/js/vendor
