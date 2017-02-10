@@ -2,6 +2,8 @@
 
 namespace ReservationBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,8 +39,11 @@ class AddController extends Controller
 
         $reservation = new Reservations();
 
-        $reservation->setStartTime($data["time"]["start"])
-                    ->setEndTime($data["time"]["end"])
+        $start = new \DateTime($data["time"]["start"]);
+        $end = new \DateTime($data["time"]["end"]);
+
+        $reservation->setStartTime($start)
+                    ->setEndTime($end)
                     ->setClasses($class)
                     ->setClassrooms($classroom)
                     ->setLessons($lesson)

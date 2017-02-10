@@ -2,6 +2,8 @@
 
 namespace ReservationBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -15,13 +17,42 @@ class ReadController extends Controller
     {
         $repo = $this->getDoctrine()->getRepository('ReservationBundle:Reservations');
         
-        $reservations = $repo->createQueryBuilder('q')
-            ->getQuery()
-            ->getArrayResult();
-        
+        $reservations = $repo->findAll();
+
+        $tbl = array();
+        foreach ( $reservations AS $val ) {
+            $tbl[] = array(
+                "id" => $val->getId(),
+                "time" => array(
+                    "start" => $val->getStartTime(),
+                    "end" => $val->getEndTime()
+                ),
+                "user" => array(
+                    "id" => $val->getUsers()->getId(),
+                    "firstName" => $val->getUsers()->getFirstName(),
+                    "lastName" => $val->getUsers()->getLastName(),
+                    "accessType" => $val->getUsers()->getAccessType(),
+                    "email" => $val->getUsers()->getEmail(),
+                    "phoneNumber" => $val->getUsers()->getPhoneNumber()
+                ),
+                "class" => array(
+                    "id" => $val->getClasses()->getId(),
+                    "name" => $val->getClasses()->getName()
+                ),
+                "classroom" => array(
+                    "id" => $val->getClassrooms()->getId(),
+                    "name" => $val->getClassrooms()->getName()
+                ),
+                "lesson" => array(
+                    "id" => $val->getLessons()->getId(),
+                    "name" => $val->getLessons()->getName()
+                )
+            );
+        }
+
         $response = new JsonResponse();
-        $response->setData($reservations);
-        
+        $response->setData($tbl);
+
         $response->headers->set('Access-Control-Allow-Origin', '*');
         
         return $response;

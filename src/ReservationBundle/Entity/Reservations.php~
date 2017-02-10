@@ -2,6 +2,7 @@
 
 namespace ReservationBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,14 +23,14 @@ class Reservations
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="start_time", type="date")
      */
     private $startTime;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="end_time", type="date")
      */
@@ -68,7 +69,7 @@ class Reservations
     /**
      * Set startTime
      *
-     * @param \DateTime $startTime
+     * @param DateTime $startTime
      *
      * @return Reservations
      */
@@ -82,7 +83,7 @@ class Reservations
     /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getStartTime()
     {
@@ -92,7 +93,7 @@ class Reservations
     /**
      * Set endTime
      *
-     * @param \DateTime $endTime
+     * @param DateTime $endTime
      *
      * @return Reservations
      */
@@ -106,11 +107,106 @@ class Reservations
     /**
      * Get endTime
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getEndTime()
     {
         return $this->endTime;
     }
-}
 
+    /**
+     * Set users
+     *
+     * @param Users $users
+     *
+     * @return Reservations
+     */
+    public function setUsers(Users $users = null)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return Users
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set lessons
+     *
+     * @param Lessons $lessons
+     *
+     * @return Reservations
+     */
+    public function setLessons(Lessons $lessons = null)
+    {
+        $this->lessons = $lessons;
+
+        return $this;
+    }
+
+    /**
+     * Get lessons
+     *
+     * @return Lessons
+     */
+    public function getLessons()
+    {
+        return $this->lessons;
+    }
+
+    /**
+     * Set classes
+     *
+     * @param Classes $classes
+     *
+     * @return Reservations
+     */
+    public function setClasses(Classes $classes = null)
+    {
+        $this->classes = $classes;
+
+        return $this;
+    }
+
+    /**
+     * Get classes
+     *
+     * @return Classes
+     */
+    public function getClasses()
+    {
+        return $this->classes;
+    }
+
+    /**
+     * Set classrooms
+     *
+     * @param Classrooms $classrooms
+     *
+     * @return Reservations
+     */
+    public function setClassrooms(Classrooms $classrooms = null)
+    {
+        $this->classrooms = $classrooms;
+
+        return $this;
+    }
+
+    /**
+     * Get classrooms
+     *
+     * @return Classrooms
+     */
+    public function getClassrooms()
+    {
+        return $this->classrooms;
+    }
+}
