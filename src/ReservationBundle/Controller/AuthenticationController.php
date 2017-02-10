@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AuthenticationController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/authentication")
      * @Method({"POST"})
      */
     public function authenticationAction(Request $request)
@@ -20,9 +20,7 @@ class AuthenticationController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         
-        $userEmail = array("email" => $data["email"]);
-        
-        $user = $em->getRepository('ReservationBundle:Users')->findOneBy($userEmail);
+        $user = $em->getRepository('ReservationBundle:Users')->findOneBy(array("email" => $data["email"]));
         
         if (!$user) {
             throw $this->createNotFoundException(
