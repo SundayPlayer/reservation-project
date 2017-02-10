@@ -1,0 +1,140 @@
+<div class="reservations">
+    <div class="container">
+        <div class="panel panel-default panel-body text-center">
+            <div>
+                <span class="glyphicon glyphicon-minus-sign" ng-click="minusOne()"></span>
+                <span class="glyphicon glyphicon-plus-sign" ng-click="plusOne()"></span>
+            </div>
+            <div>
+                {{weekDays[0].day}} {{weekDays[0].month.name}} {{weekDays[0].year}} - {{weekDays[4].day}} {{weekDays[4].month.name}} {{weekDays[4].year}}
+            </div>
+        </div>
+        <table class="table-striped table-bordered table-responsive table">
+            <tr>
+                <th></th>
+                <th ng-repeat="weekDay in weekDays">{{weekDay.weekDay.name}} {{weekDay.day}}</th>
+            </tr>
+            <tr ng-repeat="classroom in classrooms">
+                <td>{{classroom.name}}</td>
+                <td class="active" ng-repeat="weekDay in weekDays">
+                    <div ng-repeat="reservation in reservations">
+                        <div ng-repeat="day in reservation.days">
+                            <div ng-if="day.day === weekDay.day && day.month.value === weekDay.month.value && day.year === weekDay.year && reservation.classroom.name === classroom.name">
+                                <div>
+                                    Lesson : {{reservation.lesson.name}}
+                                </div>
+                                <div>
+                                    Class : {{reservation.class.name}}
+                                </div>
+                                <div>
+                                    Teacher : {{reservation.user.firstName}} {{reservation.user.lastName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="panel panel-default panel-body">
+            <label> Sort by : </label>
+            <select ng-model="order">
+                <option ng-repeat="order in orders" value="{{order.value}}">
+                    {{order.name}}
+                </option>
+            </select>
+            <label> Direction : </label>
+            <select ng-model="direction">
+                <option ng-repeat="direction in directions" value="{{direction.value}}">
+                    {{direction.name}}
+                </option>
+            </select>
+            <div class="panel panel-default panel-body" ng-repeat="classroom in classroom">
+                <div>
+                    Classroom : {{classroom.name}}
+                </div>
+                <a href="#/reservation/{{$index}}">Details</a>
+            </div>
+            <!--<div class="panel panel-default panel-body" ng-repeat="reservation in reservations">-->
+            <div class="panel panel-default panel-body" ng-repeat="reservation in reservations | orderBy:direction+order">
+                <div>
+                    Lesson : {{reservation.lesson.name}}
+                </div>
+                <div>
+                    Teacher : {{reservation.user.firstName}} {{reservation.user.lastName}}
+                </div>
+                <div>
+                    Class : {{reservation.class.name}}
+                </div>
+                <div>
+                    Classroom : {{reservation.classroom.name}}
+                </div>
+                <div>
+                    Start Date : {{reservation.time.start.date | date:'fullDate'}}
+                </div>
+                <div>
+                    End Date : {{reservation.time.end.date | date:'fullDate'}}
+                </div>
+                <a href="#/reservation/{{$index}}">Details</a>
+            </div>
+        </div>
+        <div ng-show="$parent.access === 0" class="reservationsForm panel panel-default panel-body">
+            <form ng-submit="addReservation()">
+                <h3> Add a Reservation </h3>
+                <div>
+                    <div class="form-group">
+                        <label> Teacher : </label>
+                        <select class="form-control" ng-model="reservation.user.id">
+                            <option ng-repeat="user in users" ng-if="user.accessType === 1" value="{{user.id}}">
+                                {{user.firstName}} {{user.lastName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label> Classroom : </label>
+                        <select class="form-control" ng-model="reservation.classroom.id">
+                            <option ng-repeat="classroom in classrooms" value="{{classroom.id}}">{{classroom.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label> Class : </label>
+                        <select class="form-control" ng-model="reservation.class.id">
+                            <option ng-repeat="class in classes" value="{{class.id}}">{{class.name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label> Lesson : </label>
+                        <select class="form-control" ng-model="reservation.lesson.id">
+                            <option ng-repeat="lesson in lessons" value="{{lesson.id}}">{{lesson.name}}</option>
+                        </select>
+                    </div>
+                    <div class="input-group"
+                         moment-picker="reservation.time.start"
+                         format="YYYY-MM-DD">
+                        <span class="input-group-addon">
+                            <i class="octicon octicon-calendar"></i>
+                            <label>Start date :</label>
+                        </span>
+                        <input class="form-control"
+                               placeholder="Start date"
+                               ng-model="reservation.time.start"
+                               ng-model-options="{ updateOn: 'blur' }">
+                    </div>
+                    <div class="input-group"
+                         moment-picker="reservation.time.end"
+                         format="YYYY-MM-DD">
+                        <span class="input-group-addon">
+                            <i class="octicon octicon-calendar"></i>
+                            <label>End date :</label>
+                        </span>
+                        <input class="form-control"
+                               placeholder="End date"
+                               ng-model="reservation.time.end"
+                               ng-model-options="{ updateOn: 'blur' }">
+                    </div>
+                    <button type="submit" class="btn btn-primary form-control">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

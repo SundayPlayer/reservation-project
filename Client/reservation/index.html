@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reservations</title>
+
+    <!-- Include Bootstrap -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Include the core AngularJS library -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!--<script src="js/vendor/angular-1.6.1/angular.min.js"></script>-->
+
+    <!-- Include the AngularJS routing library -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
+    <!--<script src="js/vendor/angular-1.6.1/angular-route.min.js"></script>-->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+    <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+
+    <!-- Include Jquery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body ng-app="Reservations" ng-controller="AppController">
+<header>
+    <div class="header panel panel-default panel-body">
+        <div class="pull-left">
+            <a href="#/">
+                <button type="submit" class="btn btn-success">Home</button>
+            </a>
+            <a href="#/reservations">
+                <button type="submit" class="btn btn-success">Reservations</button>
+            </a>
+            <a href="#/classes">
+                <button type="submit" class="btn btn-success">Classes</button>
+            </a>
+            <a href="#/users">
+                <button type="submit" class="btn btn-success">Users</button>
+            </a>
+            <a href="#/lessons">
+                <button type="submit" class="btn btn-success">Lessons</button>
+            </a>
+            <a href="#/classrooms">
+                <button type="submit" class="btn btn-success">Classrooms</button>
+            </a>
+        </div>
+        <div class="pull-right">
+            <a href="#/login">
+                <button type="submit" class="btn btn-danger">Login</button>
+            </a>
+
+            <a href="#/register">
+                <button type="submit" class="btn btn-danger">Register</button>
+            </a>
+        </div>
+        <br/>
+        <hr/>
+        <div>
+            <h3>
+                {{date | date:'fullDate'}}
+            </h3>
+        </div>
+    </div>
+</header>
+<div ng-view></div>
+
+<!-- Modules -->
+<script type="text/javascript" src="js/app.js"></script>
+
+<!-- Controllers -->
+<script type="text/javascript" src="js/controllers/AppController.js"></script>
+<script type="text/javascript" src="js/controllers/HomeController.js"></script>
+<script type="text/javascript" src="js/controllers/UsersController.js"></script>
+<script type="text/javascript" src="js/controllers/UserController.js"></script>
+<script type="text/javascript" src="js/controllers/ReservationsController.js"></script>
+<script type="text/javascript" src="js/controllers/ReservationController.js"></script>
+<script type="text/javascript" src="js/controllers/ClassesController.js"></script>
+<script type="text/javascript" src="js/controllers/ClassController.js"></script>
+<script type="text/javascript" src="js/controllers/LessonsController.js"></script>
+<script type="text/javascript" src="js/controllers/LessonController.js"></script>
+<script type="text/javascript" src="js/controllers/ClassroomsController.js"></script>
+<script type="text/javascript" src="js/controllers/ClassroomController.js"></script>
+<script type="text/javascript" src="js/controllers/RegisterController.js"></script>
+<script type="text/javascript" src="js/controllers/LoginController.js"></script>
+
+<!-- Services -->
+<script type="text/javascript" src="js/services/classes.js"></script>
+<script type="text/javascript" src="js/services/classrooms.js"></script>
+<script type="text/javascript" src="js/services/lessons.js"></script>
+<script type="text/javascript" src="js/services/reservations.js"></script>
+<script type="text/javascript" src="js/services/users.js"></script>
+
+</body>
+</html>
+

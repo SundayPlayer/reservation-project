@@ -1,0 +1,52 @@
+{
+  "reservations": [
+    {
+      "time":
+      {
+        "start": "1486384987736",
+        "end": "1486384987736"
+      },
+      "classroom":
+      {
+        "name": "Tatooine"
+      },
+      "class":
+      {
+        "name": "P1"
+      },
+      "lesson":
+      {
+        "name": "JAVA"
+      },
+      "user":
+      {
+        "firstName": "Romain",
+        "lastName": "Virmaux"
+      }
+    },
+    {
+      "time":
+      {
+        "start": "1486384987736",
+        "end": "1486384987736"
+      },
+      "classroom":
+      {
+        "name": "Balnab"
+      },
+      "class":
+      {
+        "name": "P2"
+      },
+      "lesson":
+      {
+        "name": "C"
+      },
+      "user":
+      {
+        "firstName": "Romain",
+        "lastName": "Virmaux"
+      }
+    }
+  ]
+}

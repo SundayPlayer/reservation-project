@@ -1,0 +1,15 @@
+{
+  "lessons": [
+    {
+      "name": "JAVA"
+    },
+    {
+      "name": "JavaScript"
+    },
+    {
+      "name": "C"
+    },
+    {
+      "name": "PHP"
+    }]
+}

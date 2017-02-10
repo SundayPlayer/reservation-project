@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "firstName": "Hamid",
+      "lastName": "Kellali",
+      "email": "hamid.kellali@gmail.com",
+      "password": "1511",
+      "phoneNumber": "0601362074",
+      "type": "Admin"
+    },
+    {
+      "firstName": "Baptiste",
+      "lastName": "Vadé",
+      "email": "baptiste.vade@gmail.com",
+      "password": "1511",
+      "phoneNumber": "0600000000",
+      "type": "Student"
+    },
+    {
+      "firstName": "Romain",
+      "lastName": "Virmaux",
+      "email": "niamor.virmaux@gmail.com",
+      "password": "1511",
+      "phoneNumber": "0600000001",
+      "type": "Teacher"
+    }
+  ]
+}

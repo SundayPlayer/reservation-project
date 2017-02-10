@@ -1,0 +1,28 @@
+<div class="reservation">
+    <div class="container">
+        <div class="reservationsForm panel panel-default panel-body">
+            <a href="#/reservations">
+                <button type="submit" class="btn btn-primary">Back</button>
+            </a>
+            <div>
+                Lesson : {{reservation.lesson.name}}
+            </div>
+            <div>
+                Teacher : {{reservation.user.firstName}} {{reservation.user.lastName}}
+            </div>
+            <div>
+                Class : {{reservation.class.name}}
+            </div>
+            <div>
+                Start Date : {{reservation.time.start | date:'shortDate'}}
+            </div>
+            <div>
+                End Date : {{reservation.time.end | date:'shortDate'}}
+            </div>
+            <div>
+                Classroom : {{reservation.classroom.name}}
+            </div>
+        </div>
+        <br/>
+    </div>
+</div>

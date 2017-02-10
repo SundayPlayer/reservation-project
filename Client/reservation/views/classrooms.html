@@ -1,0 +1,23 @@
+<div class="classes">
+    <div class="container">
+        <div class="reservationsForm panel panel-default panel-body">
+            <div class="reservationsForm panel panel-default panel-body" ng-repeat="classroom in classrooms">
+                <div>
+                    {{classroom.name}}
+                </div>
+                <a href="#/classroom/{{classroom.id}}">Details</a>
+                <br/>
+            </div>
+        </div>
+        <div ng-show="$parent.access === 0" class="reservationsForm panel panel-default panel-body">
+            <form ng-submit="addClassroom()">
+                <h3> Add a classroom </h3>
+                <div class="form-group">
+                    <label> Name : </label>
+                    <input class="form-control" placeholder="Type your classroom name here" ng-model="classroom.name" />
+                </div>
+                <button type="submit" class="btn btn-primary form-control">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

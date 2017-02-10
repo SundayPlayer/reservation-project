@@ -1,0 +1,33 @@
+ability to sort by ...
+update, delete
+php update, delete and create
+better reservation view (sort by, week by week)
+restrict view depending on rights (login)
+
+hello everyone, thank you for coming to this presentation, i'm going to introduce the group, then i'll talk about the
+ topic of this presentation, it's purpose, the reasoning behind the decisions that were taken, the issues we were
+ faced with, how we managed to overcome them, etc. I am hamid kellali, this is baptiste vadé. i was responsiblefor
+ the client side part of the app, he was responsible for the server side. we decided to use angularjs to take care
+ of the client side part, because I was already starting to get familiar with this framework, and decided to test
+  myself further and improve on what i have already learned. For the server side of the application, we naturally
+  leaned towards php, so we decided to use symfony to avoid having to deal with the pain of setting up the database
+  manually. The way the app was set up was, the client makes a request, that is sent to the server in a json format,
+  the server deals with the request and responds accordingly. The purpose of the application was to have all the
+  scheduled lessons on a board, to be able to add lessons, set a period of time, a teacher, a class, to that lesson.
+
+  Hello everyone, thanks for joining us today, I'll briefly introduce the group, talk about the projet, its purpose,
+  explain the reasoning behind some of the decisions that were taken, the issues we were faced with, how we managed
+  to overcome them, etc... I am hamid Kellali, my colleague is baptiste vadé. I think you know by now what the project
+  is about, we basically wanted to have a list of all the scheduled lessons for a given week, and the ability to add a
+  lesson, assign a teacher to it, a classroom, and a class. To do this we decided to separate the project in two parts,
+  first the server, which was developped by baptiste, and the client, developped by me, because we thought it best to
+  separate the different components of our application, and it's also easier to maintain. We also decided to use two
+  different technologies, angular for the client, and symfony for the server. I used angular because i was already
+  to get familiar with the framework (because i was asked to learn it in the company i started  working at two weeks
+  ago) and he chose symfony because he naturally wanted to use php for the server, and it was the only framework he was
+  familiar with, and also because it helped him set up the database and all the entity components easily.
+  We tried to implement as many features as we could, but we quickly realised that some features were very similar,
+  so we decided to leave them out and implement new types of features everytime, because we already knew we could
+  implement them if we had more time, and unfortunately, we were set back from the get go, because baptiste had an
+  issue with his server, or something like that, well he'll explain later, in french, but he basically could not do
+  anything useful for the first two days. thats all for the abstract.
